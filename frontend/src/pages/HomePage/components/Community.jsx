@@ -8,9 +8,6 @@ import {
   TextField,
   Paper,
   useTheme,
-  useMediaQuery,
-  Card,
-  CardContent,
   InputAdornment,
   FormControl,
   MenuItem,
@@ -20,7 +17,6 @@ import {
   Fade,
   Snackbar,
   Alert,
-  Tooltip,
   styled
 } from '@mui/material';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
@@ -28,17 +24,9 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import SubjectIcon from '@mui/icons-material/Subject';
 import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
-import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SendIcon from '@mui/icons-material/Send';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import Footer from '../../../components/Footer';
 
 // Özel stil bileşenleri
 const StyledTextField = styled(TextField)(({ theme }) => ({
