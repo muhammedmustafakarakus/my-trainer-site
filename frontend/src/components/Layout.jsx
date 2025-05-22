@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+// !!! EKSİK IMPORT: Outlet'i react-router-dom'dan import edin !!!
+import { Outlet, Link as RouterLink } from 'react-router-dom';
 import { 
   AppBar, 
   Box, 
@@ -26,32 +28,35 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import ArticleIcon from '@mui/icons-material/Article';
 import StarIcon from '@mui/icons-material/Star';
-import { Link as RouterLink } from 'react-router-dom';
+// import { Link as RouterLink } from 'react-router-dom'; // Zaten yukarıda import edilmiş
 import Footer from './Footer';
+import headerImage from '../assets/headerImage.jpg'; // Doğru import yolu olduğundan emin olun
 
 const pages = [
   { name: 'Ana Sayfa', path: '/', icon: <HomeIcon /> },
   { name: 'Hakkımda', path: '/about', icon: <InfoIcon /> },
   { name: 'Dersler', path: '/courses', icon: <LibraryBooksIcon /> },
-  { name: 'İletişim', path: '/contact', icon: <ContactSupportIcon /> },
-  { name: 'Blog', path: '/blog', icon: <ArticleIcon /> },
+  { name: 'Öğrenci Koçluğu', path: '/courses', icon: <LibraryBooksIcon /> }, // Aynı path'e sahip iki ders?
+  { name: 'Kamplar ve Etkinlikler', path: '/courses', icon: <LibraryBooksIcon /> }, // Aynı path'e sahip üç ders?
   { name: 'Yorumlar', path: '/testimonials', icon: <StarIcon /> },
+  { name: 'Blog', path: '/blog', icon: <ArticleIcon /> },
+  { name: 'İletişim', path: '/contact', icon: <ContactSupportIcon /> },
 ];
 
 const settings = [
   { name: 'Profilim', path: '/profile' },
   { name: 'Derslerim', path: '/dashboard' },
-  { name: 'Çıkış', path: '/logout' },
+  { name: 'Çıkış', path: '/logout' }, // Çıkış işlemi için bir fonksiyon gerekebilir
 ];
 
-function Layout({ children }) {
+// Layout component'i artık children prop'u almayacak.
+function Layout() { 
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
-
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -72,7 +77,19 @@ function Layout({ children }) {
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             {/* Logo için - Desktop */}
-            <SchoolIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'primary.main' }} />
+            <Box
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                mr: 1,
+                width: 45,
+                height: 45,
+                backgroundImage: `url(${headerImage})`,
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                borderRadius:50
+              }}
+            />
             <Typography
               variant="h6"
               noWrap
@@ -86,7 +103,7 @@ function Layout({ children }) {
                 textDecoration: 'none',
               }}
             >
-              EDU MENTOR
+              MATX
             </Typography>
 
             {/* Mobil menü butonu */}
@@ -115,17 +132,17 @@ function Layout({ children }) {
                   <Box sx={{ py: 2, px: 2, display: 'flex', alignItems: 'center' }}>
                     <SchoolIcon sx={{ mr: 1, color: 'primary.main' }} />
                     <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                      EDU MENTOR
+                      MATX
                     </Typography>
                   </Box>
                   <Divider />
                   <List>
                     {pages.map((page) => (
                       <ListItem 
-                        button 
-                        key={page.name} 
+                        key={page.name} // `button` prop'u ListItem'da doğrudan yok, sx veya component ile stil verilebilir.
                         component={RouterLink} 
                         to={page.path}
+                        sx={{ '&:hover': { backgroundColor: 'action.hover' } }} // Örnek hover efekti
                       >
                         <ListItemIcon>
                           {page.icon}
@@ -154,7 +171,7 @@ function Layout({ children }) {
                 textDecoration: 'none',
               }}
             >
-              EDU MENTOR
+              MATX
             </Typography>
             
             {/* Desktop Navigation */}
@@ -227,8 +244,9 @@ function Layout({ children }) {
         </Container>
       </AppBar>
       
-      <Box component="main" sx={{ flexGrow: 1 }}>
-        {children}
+      <Box component="main" sx={{ flexGrow: 1, width: '100%' }}>
+        {/* !!! DEĞİŞİKLİK BURADA: children yerine Outlet kullanın !!! */}
+        <Outlet />
       </Box>
       
       <Footer />

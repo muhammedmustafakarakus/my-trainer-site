@@ -25,7 +25,7 @@ const Hero = () => {
 
   const highlights = [
     { icon: <PersonIcon />, label: "Birebir Özel Dersler" },
-    { icon: <StarIcon />, label: "Uzman Eğitmenler" },
+    { icon: <StarIcon />, label: "Uzman Eğitmen" },
     { icon: <VerifiedIcon />, label: "Kalite Garantisi" },
   ];
 
@@ -33,7 +33,7 @@ const Hero = () => {
     <Box
       sx={{
         bgcolor: 'primary.main',
-        background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
+        background: `linear-gradient(135deg, ${theme.palette.secondary.main} 55%, ${theme.palette.third.dark} 100%)`,
         color: 'white',
         position: 'relative',
         overflow: 'hidden',
@@ -121,7 +121,7 @@ const Hero = () => {
                   maxWidth: '95%'
                 }}
               >
-                Akademik başarınızı artırmak için uzman eğitmenlerimizle birebir, 
+                Akademik başarınızı artırmak için birebir, 
                 kişiselleştirilmiş online dersler alın ve potansiyelinizi keşfedin.
               </Typography>
               
@@ -174,6 +174,7 @@ const Hero = () => {
                   component={RouterLink}
                   to="/courses"
                   sx={{
+                    backgroundColor:'secondary.main',
                     fontWeight: 600,
                     px: 4,
                     py: 1.5,
@@ -181,6 +182,7 @@ const Hero = () => {
                     boxShadow: '0 8px 20px rgba(0, 0, 0, 0.2)',
                     transition: 'all 0.3s',
                     '&:hover': {
+                       backgroundColor:'secondary.dark',
                       transform: 'translateY(-3px)',
                       boxShadow: '0 12px 20px rgba(0, 0, 0, 0.3)'
                     }
@@ -271,7 +273,7 @@ const Hero = () => {
                           Matematik Dersi
                         </Typography>
                         <Typography variant="caption" color="text.secondary">
-                          Ahmet Hoca ile Birebir Özel Ders
+                           Verimli Birebir Özel Ders
                         </Typography>
                       </Box>
                     </Stack>
@@ -292,10 +294,11 @@ const Hero = () => {
                       <Avatar sx={{ bgcolor: theme.palette.primary.main }}>F</Avatar>
                       <Box>
                         <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                          Fizik Dersi
+                          Derslerimiz
                         </Typography>
                         <Typography variant="caption" color="text.secondary">
-                          Zeynep Hoca ile Birebir Özel Ders
+                         5,6,7,8.Sınıflar ve LGS-9,10,11,12.Sınıflar ve YKS
+                  / KPSS-DGS-ALES
                         </Typography>
                       </Box>
                     </Stack>
@@ -318,10 +321,10 @@ const Hero = () => {
                 }}
               >
                 <Typography variant="h6" sx={{ fontWeight: 700, color: theme.palette.primary.main }}>
-                  500+
+                  Başarıya Götüren
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Memnun Öğrenci
+                  Planlı Dersler
                 </Typography>
               </Paper>
               
@@ -339,10 +342,10 @@ const Hero = () => {
                 }}
               >
                 <Typography variant="h6" sx={{ fontWeight: 700, color: theme.palette.primary.main }}>
-                  20+
+                  Profesyonel Koçluk ile
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Uzman Eğitmen
+                  stratejik ilerleme
                 </Typography>
               </Paper>
             </Box>

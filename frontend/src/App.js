@@ -12,23 +12,29 @@ import TestimonialsPage from './pages/TestimonialsPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
-import Layout from './components/Layout';
+import Layout from './components/Layout'; // Genel sayfalar için Layout
 import ProfilePage from './pages/ProfilePage';
 import BookingPage from './pages/BookingPage';
 import SuccessPage from './pages/SuccessPage';
+import AdminRoutes from './AdminRoutes'; // Admin route'larını içeren component
 
-// Theme oluşturma
+// Theme oluşturma (önceki kodunuzdan)
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#13971B',
-      light: '#757de8',
-      dark: '#002984',
+      main: '#00695C',
+      light: '#4DB6AC', // Aktif tab için daha açık bir ton
+      dark: '#00564B',
     },
     secondary: {
-      main: '#12748D',
+      main: '#004D40',
       light: '#4D9CAF',
-      dark: '#065D72',
+      dark: '#00221F',
+    },
+    third: {
+      main: '#00695C',
+      light: '#757de8',
+      dark: '#13971B',
     },
     background: {
       default: '#f5f5f5',
@@ -37,34 +43,13 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: '"Poppins", "Roboto", "Helvetica", "Arial", sans-serif',
-    h1: {
-      fontWeight: 700,
-      fontSize: '2.5rem',
-    },
-    h2: {
-      fontWeight: 600,
-      fontSize: '2rem',
-    },
-    h3: {
-      fontWeight: 600,
-      fontSize: '1.75rem',
-    },
-    h4: {
-      fontWeight: 600,
-      fontSize: '1.5rem',
-    },
-    h5: {
-      fontWeight: 500,
-      fontSize: '1.25rem',
-    },
-    h6: {
-      fontWeight: 500,
-      fontSize: '1rem',
-    },
-    button: {
-      fontWeight: 500,
-      textTransform: 'none',
-    },
+    h1: { fontWeight: 700, fontSize: '2.5rem' },
+    h2: { fontWeight: 600, fontSize: '2rem' },
+    h3: { fontWeight: 600, fontSize: '1.75rem' },
+    h4: { fontWeight: 600, fontSize: '1.5rem' },
+    h5: { fontWeight: 500, fontSize: '1.25rem' },
+    h6: { fontWeight: 500, fontSize: '1rem' },
+    button: { fontWeight: 500, textTransform: 'none' },
   },
   shape: {
     borderRadius: 8,
@@ -100,9 +85,15 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
+        <Routes>
+          {/* Genel Layout'u kullanan sayfalar */}
+          {/* Layout bileşeni bir 'element' prop'u olarak verilir ve içindeki <Outlet /> child route'ları render eder. */}
+          <Route element={<Layout />}>
+            {/* Ana sayfa için 'index' route'u. Bu, parent route'un path'i ('/') ile eşleştiğinde HomePage'i render eder. */}
+            <Route index element={<HomePage />} />
+            {/* Alternatif olarak path="/" de kullanılabilirdi, ancak parent <Route> pathsiz ise index daha doğrudur. */}
+            {/* <Route path="/" element={<HomePage />} /> */}
+
             <Route path="/about" element={<AboutPage />} />
             <Route path="/courses" element={<CoursesPage />} />
             <Route path="/courses/:id" element={<CourseDetailPage />} />
@@ -116,8 +107,15 @@ function App() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/booking/:courseId" element={<BookingPage />} />
             <Route path="/booking/success" element={<SuccessPage />} />
-          </Routes>
-        </Layout>
+          </Route>
+
+          {/* Admin Paneli Route'ları */}
+          {/* /admin ile başlayan tüm yollar AdminRoutes component'i tarafından yönetilecek */}
+          <Route path="/admin/*" element={<AdminRoutes />} />
+
+          {/* İsteğe bağlı: 404 Not Found sayfası */}
+          {/* <Route path="*" element={<NotFoundPage />} /> */}
+        </Routes>
       </Router>
     </ThemeProvider>
   );

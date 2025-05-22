@@ -16,8 +16,8 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 const featuredCourses = [
   {
     id: 1,
-    title: 'Lise Matematik Temelleri',
-    description: 'Lise matematik müfredatının temelleri, üniversite hazırlık ve sınavlar için gerekli tüm konular.',
+    title: 'Ortaokul Matematik - LGS',
+    description: '5,6,7,8.Sınıf ortaokul matematik müfredatının temelleri, liseye hazırlık ve sınavlar için gerekli tüm konular.',
     image: '/static/images/courses/math.jpg',
     price: '200₺/saat',
     rating: 4.9,
@@ -25,8 +25,8 @@ const featuredCourses = [
   },
   {
     id: 2,
-    title: 'Fizik Problem Çözme Teknikleri',
-    description: 'Zorlu fizik problemlerini kolay çözmenizi sağlayacak stratejiler ve teknikler.',
+    title: 'Lise Matematik - YKS',
+    description: '9,10,11,12.Sınıf Lise matematik müfredatının temelleri, üniversite hazırlık ve sınavlar için gerekli tüm konular.',
     image: '/static/images/courses/physics.jpg',
     price: '220₺/saat',
     rating: 4.8,
@@ -34,13 +34,23 @@ const featuredCourses = [
   },
   {
     id: 3,
-    title: 'Python Programlama Başlangıç',
+    title: 'KPSS-DGS-ALES',
+    description: 'Zorlu fizik problemlerini kolay çözmenizi sağlayacak stratejiler ve teknikler.',
+    image: '/static/images/courses/physics.jpg',
+    price: '220₺/saat',
+    rating: 4.8,
+    reviews: 98,
+  },
+  {
+    id: 4,
+    title: 'Profesyonel Eğitim Koçluğu',
     description: 'Sıfırdan Python programlama dilini öğrenerek yazılım dünyasına adım atın.',
     image: '/static/images/courses/python.jpg',
     price: '250₺/saat',
     rating: 5.0,
     reviews: 156,
-  },
+  }
+  
 ];
 
 const PopularLessons = () => {
@@ -99,7 +109,7 @@ const PopularLessons = () => {
             <Box 
               key={course.id} 
               sx={{ 
-                width: { xs: '100%', sm: '50%', md: '33.33%' }, 
+                width: { xs: '100%', sm: '50%', md: '20%' }, 
                 padding: 2 // Padding between cards
               }}
             >
@@ -146,7 +156,12 @@ const PopularLessons = () => {
                   <Button 
                     fullWidth 
                     variant="contained" 
-                    color="primary" 
+                   sx={{
+    backgroundColor: "primary.main",
+    "&:hover": {
+      backgroundColor: "primary.dark",
+    },
+  }}
                     component={RouterLink}
                     to={`/courses/${course.id}`}
                   >

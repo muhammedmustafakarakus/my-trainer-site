@@ -13,7 +13,7 @@ const Statistics = () => {
         <Grid item xs={6} sm={3}>
           <Box sx={{ textAlign: 'center' }}>
             <Typography variant="h3" component="p" sx={{ fontWeight: 700 }}>
-              500+
+              10+
             </Typography>
             <Typography variant="subtitle1">
               Mutlu Öğrenci
@@ -33,7 +33,7 @@ const Statistics = () => {
         <Grid item xs={6} sm={3}>
           <Box sx={{ textAlign: 'center' }}>
             <Typography variant="h3" component="p" sx={{ fontWeight: 700 }}>
-              8+
+              2+
             </Typography>
             <Typography variant="subtitle1">
               Yıllık Deneyim
